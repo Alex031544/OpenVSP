@@ -10306,7 +10306,22 @@ void VSP_SOLVER::CalculateSpanWiseLoading(void)
     // Write out column labels
     
                     // 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 
-    fprintf(LoadFile_,"   Wing       S        Yavg     Chord     V/Vref      Cl        Cd        Cs        Cx        Cy       Cz        Cmx       Cmy       Cmz \n");
+    fprintf(LoadFile_,"      Wing"
+                      "         S"
+                      "      Yavg"
+                      "    S_span"
+                      "     Chord"
+                      "    V/Vref"
+                      "        Cl"
+                      "        Cd"
+                      "        Cs"
+                      "        Cx"
+                      "        Cy"
+                      "        Cz"
+                      "       Cmx"
+                      "       Cmy"
+                      "       Cmz"
+                      "\n");
 
     TotalLift = 0.;  
 
@@ -10318,10 +10333,11 @@ void VSP_SOLVER::CalculateSpanWiseLoading(void)
               
           for ( k = 1 ; k <= NumberOfStations ; k++ ) {
 
-             fprintf(LoadFile_,"%9d %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf \n",
+             fprintf(LoadFile_,"%9d %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf %9.5lf \n",
                      i,
                      VSPGeom().VSP_Surface(i).s(k),                    
                      Span_Yavg_[i][k],
+                     Span_Area_[i][k],
                      VSPGeom().VSP_Surface(i).LocalChord(k),
                      Local_Vel_[3][i][k],
                      Span_Cl_[i][k],
